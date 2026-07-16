@@ -1,1 +1,1 @@
-# VHDL for Bignner using Quartus Prime 
+# VHDL for Beginners using Quartus Prime 
