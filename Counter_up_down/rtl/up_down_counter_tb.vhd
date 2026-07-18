@@ -1,0 +1,72 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_unsigned.all;
+
+entity Counter_upDown_tb is
+end Counter_updown_tb;
+
+architecture tb of Counter_upDown_tb is
+component Counter_upDown is
+port(
+	clk , rst 	: in std_logic;
+	up, down 	: in std_logic;
+	Cntr_out		: out std_logic_vector(15 downto 0)
+);
+end component;
+
+signal clk_1 	: std_logic :='0';
+signal rst_1   : std_logic :='1';
+signal up_1		: std_logic :='1';
+signal down_1	: std_logic	:='0';
+signal cntr_out_1 : std_logic_vector(15 downto 0);
+
+begin
+uut: Counter_upDown port map (
+											clk 			=> clk_1,
+											rst 			=> rst_1,
+											up  			=> up_1,
+											down 			=> down_1,
+											Cntr_out 	=> cntr_out_1
+											);
+clk_process: process(clk_1)
+begin
+	clk_1 <= not clk_1 after 5ns;
+
+end process;
+
+logic_init: process
+begin
+	rst_1 <= '1';
+	up_1	<= '1';
+	down_1<= '0';
+	wait for 100ns;
+	
+	rst_1 <= '0';
+	up_1	<= '1';
+	down_1<= '0';
+	wait for 1000ns;
+	
+	up_1	<= '0';
+	down_1<= '0';
+	wait for 1000ns;
+	
+	up_1	<= '0';
+	down_1<= '1';
+	wait for 1000ns;
+	
+
+	up_1	<= '1';
+	down_1<= '0';
+	wait for 1000ns;
+	
+	up_1	<= '0';
+	down_1<= '0';
+	wait for 1000ns;
+	
+	up_1	<= '0';
+	down_1<= '1';
+	wait for 1000ns;
+	wait;
+end process;
+end tb;

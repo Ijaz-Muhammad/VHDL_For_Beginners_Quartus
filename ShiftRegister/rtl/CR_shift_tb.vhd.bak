@@ -1,0 +1,15 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_unsigned.all;
+
+-- circular right shift
+entity CR_shift is
+port(
+	clk, rst 	: in std_logic;
+	load_data	: in std_logic_vector(5 downto 0);
+	shift_count	: in std_logic_vector(2 downto 0);
+	new_data		: in std_logic;
+	shifted_data: out std_logic_vector(5 downto 0)
+	);
+end cR_shift;
